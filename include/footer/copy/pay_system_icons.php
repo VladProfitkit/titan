@@ -1,0 +1,1 @@
+<a class="pay_system_icons" href="/help/payment/"><img src="/upload/logo1h.png" alt=""></a>
