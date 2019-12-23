@@ -339,6 +339,62 @@ footer .footer_inner {
     bottom: 2px;
 }
 
+.item_main_info .block-price-props {
+    flex-direction: column;
+}
+
+.item_main_info .block-price-props > div {
+    width: 100% !important;
+}
+
+.item_main_info .block-price-props .props-top {
+    margin-right: 0;
+    margin-bottom: 40px;
+}
+
+.item_main_info .price-main {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.item_main_info .price-main > div {
+    flex-basis: 50%;
+}
+
+.item_main_info .props-top {
+    padding-right: 0 !important;
+}
+
+.item_main_info .buy_block {
+    display: flex;
+    flex-direction: column;
+}
+
+.item_main_info .buy_block .counter_wrapp {
+    display: flex !important;
+    justify-content: space-between;
+    padding-right: 0 !important;
+}
+
+.item_main_info .info_item .middle_info .buy_block .one_click {
+    width: 100% !important;
+}
+
+.item_main_info .quantity_block_wrapper {
+    padding-top: 0;
+}
+
+.item_main_info .prices_block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.item_main_info .price_matrix_block .price {
+    margin-bottom: 0;
+}
+
 @media all and (max-width: 1490px){
     
     .table-menu .js-dropdown.menu-item:hover .dropdown-menu .dropdown-menu-new {

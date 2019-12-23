@@ -471,7 +471,7 @@ if($arAccessories){
 if($arResult['VARIABLES']['SECTION_CODE']) {
     ?> 
     <div class="recom_block">
-    <h3 class="recom_title">Вам так же могут понравиться</h3> <?
+    <h3 class="recom_title">Вам также могут понравиться</h3> <?
     $APPLICATION->IncludeComponent(
 	"bitrix:catalog.section",
 	"catalog_block_slider_new",

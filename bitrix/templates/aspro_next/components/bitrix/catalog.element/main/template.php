@@ -467,6 +467,22 @@ $arViewedData = array(
                     <div class="price-main">
                         <div class="prices_block">
                             <? if($arResult['PROPERTIES']['ARCHIV_TOV']['VALUE'] != 'Да'): ?>
+                              <div class="quantity_block_wrapper">
+                                <?if($useStores){?>
+                                  <div class="p_block">
+                                    <?}?>
+                                    <?=$arQuantityData["HTML"];?>
+                                    <?if($useStores){?>
+                                  </div>
+                              <?}?>
+                                <?if($arParams["SHOW_CHEAPER_FORM"] == "Y"):?>
+                                    <div class="cheaper_form">
+                                        <span class="animate-load" data-event="jqm" data-param-form_id="CHEAPER" data-name="cheaper" data-autoload-product_name="<?=CNext::formatJsName($arResult["NAME"]);?>" data-autoload-product_id="<?=$arResult["ID"];?>"><?=($arParams["CHEAPER_FORM_NAME"] ? $arParams["CHEAPER_FORM_NAME"] : GetMessage("CHEAPER"));?></span>
+                                    </div>
+                                <?endif;?>
+                              </div>
+                            <? endif; ?>
+                            <? if($arResult['PROPERTIES']['ARCHIV_TOV']['VALUE'] != 'Да'): ?>
                                 <div class="cost prices clearfix">
                                     <?if( count( $arResult["OFFERS"] ) > 0 ){?>
                                         <div class="with_matrix" style="display:none;">
@@ -586,22 +602,6 @@ $arViewedData = array(
                                 <?=$arResult['PROPERTIES']['sales_notes']['VALUE']?>
                             <?php endif;?>
                         </div>
-                        <? if($arResult['PROPERTIES']['ARCHIV_TOV']['VALUE'] != 'Да'): ?>
-                            <div class="quantity_block_wrapper">
-                                <?if($useStores){?>
-                                <div class="p_block">
-                                    <?}?>
-                                    <?=$arQuantityData["HTML"];?>
-                                    <?if($useStores){?>
-                                </div>
-                            <?}?>
-                                <?if($arParams["SHOW_CHEAPER_FORM"] == "Y"):?>
-                                    <div class="cheaper_form">
-                                        <span class="animate-load" data-event="jqm" data-param-form_id="CHEAPER" data-name="cheaper" data-autoload-product_name="<?=CNext::formatJsName($arResult["NAME"]);?>" data-autoload-product_id="<?=$arResult["ID"];?>"><?=($arParams["CHEAPER_FORM_NAME"] ? $arParams["CHEAPER_FORM_NAME"] : GetMessage("CHEAPER"));?></span>
-                                    </div>
-                                <?endif;?>
-                            </div>
-                        <? endif; ?>
                     </div>
                     <div class="buy_block">
                         <? if($arResult['PROPERTIES']['ARCHIV_TOV']['VALUE'] != 'Да'): ?>
