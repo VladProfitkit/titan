@@ -4,6 +4,7 @@
 	
 use Bitrix\Main\Loader;
 use Bitrix\Main\ModuleManager;
+//Loader::includeModule('iblock');
 ?>
 <?if($arResult["ID"]):?>
 	<?if($arParams["USE_REVIEW"] == "Y" && IsModuleInstalled("forum")):?>

@@ -86,6 +86,7 @@ if($arAccessories){
 }
 ?>
 
+<?/*
 <?if($arAccessories || $arExpValues || (ModuleManager::isModuleInstalled("sale") && (!isset($arParams['USE_BIG_DATA']) || $arParams['USE_BIG_DATA'] != 'N'))){?>
 	<?$bViewBlock = ($arParams["VIEW_BLOCK_TYPE"] == "Y");?>
 	<?
@@ -96,7 +97,7 @@ if($arAccessories){
 	if($arAccessories){
 		$arTab["ASSOCIATED"]=( $arParams["DETAIL_ASSOCIATED_TITLE"] ? $arParams["DETAIL_ASSOCIATED_TITLE"] : GetMessage("ASSOCIATED_TITLE"));
 	}
-	/* Start Big Data */
+	// Start Big Data
 	if(ModuleManager::isModuleInstalled("sale") && (!isset($arParams['USE_BIG_DATA']) || $arParams['USE_BIG_DATA'] != 'N'))
 		$arTab["RECOMENDATION"]=GetMessage("RECOMENDATION_TITLE");
 	?>
@@ -297,7 +298,7 @@ if($arAccessories){
 				<?endforeach;?>
 			</ul>
 		</div>
-	
+
 		<?$disply_elements=($arParams["DISPLAY_ELEMENT_SLIDER"] ? $arParams["DISPLAY_ELEMENT_SLIDER"] : 10);?>
 		<ul class="tabs_content">
 			<?foreach($arTab as $code=>$title){?>
@@ -465,7 +466,7 @@ if($arAccessories){
 			</div>
 		</div>
 	<?endif;?>
-<?}?>
+<?}*/?>
 
 <?
 if($arResult['VARIABLES']['SECTION_CODE']) {
