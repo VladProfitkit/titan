@@ -412,6 +412,12 @@ footer .footer_inner {
     
 }
 
+@media all and (min-width: 992px) {
+    .bottom_slider.tab_slider_wrapp {
+        padding-top: 0 !important;
+    }
+}
+
 @media all and (max-width: 991px){
     
     #mobileheader .logo {
