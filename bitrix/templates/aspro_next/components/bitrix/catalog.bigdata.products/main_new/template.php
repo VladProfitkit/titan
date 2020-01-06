@@ -56,7 +56,7 @@ if($arResult['ITEMS']){?>
     <?//var_dump($arResult["_ORIGINAL_PARAMS"])?>
     <?//print_r($GLOBALS['THIS_DETAIL_TEXT']);?>
     <?//echo $isDetailText;?>
-	<span id="<?=$injectId?>_items" class="bigdata_recommended_products_items flexslider loading_state shadow border custom_flex top_right" data-plugin-options='{"animation": "slide", "animationSpeed": 600, "directionNav": true, "controlNav" :false, "animationLoop": true, "slideshow": false, "counts": [<?=!$isSetOnTop || ($isSetOnTop && $isDetailText) ? '2,2,2,2,1' : '4,3,3,2,1' ;?>]}'>
+	<span id="<?=$injectId?>_items" class="bigdata_recommended_products_items flexslider loading_state shadow border custom_flex top_right" data-plugin-options='{"animation": "slide", "animationSpeed": 600, "directionNav": true, "controlNav" :false, "animationLoop": true, "slideshow": false, "counts": [<?if (!$isSetOnTop) {echo '2,1,1,2,1';} elseif ($isSetOnTop && $isDetailText) {echo '2,2,2,2,1';} else {echo '4,3,3,2,1';}?>]}'>
         <!-- "controlsContainer": ".tabs_slider_navigation.RECOMENDATION_nav", -->
 		<ul class="tabs_slider RECOMENDATION_slides slides catalog_block">
 			<?foreach ($arResult['ITEMS'] as $key => $arItem){?>

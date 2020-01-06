@@ -25,6 +25,8 @@ $curJsId = $this->randString();
 global $setOnTop;
 if (!empty($arResult["SET_ITEMS"])) {
     $setOnTop = true;
+} else {
+    $setOnTop = false;
 };
 ?>
 
