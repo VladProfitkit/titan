@@ -270,6 +270,10 @@ footer .footer_inner {
     margin-right: 35px;
 }
 
+.catalog_detail .detail_text {
+    margin-bottom: 35px;
+}
+
 .payments_block {
     margin-top: 15px;
     text-align: right;
@@ -771,4 +775,9 @@ h3.recom_title {
 
 body .recom_block .flex-viewport {
     height: 460px;
+}
+
+.tabs ul.nav.nav-tabs {
+    width: 100%;
+    float: left;
 }

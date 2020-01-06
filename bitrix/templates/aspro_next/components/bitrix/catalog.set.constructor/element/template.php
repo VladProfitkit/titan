@@ -20,6 +20,14 @@ $templateData = array(
 );
 $curJsId = $this->randString();
 ?>
+
+<?
+global $setOnTop;
+if (!empty($arResult["SET_ITEMS"])) {
+    $setOnTop = true;
+};
+?>
+
 <div id="bx-set-const-<?=$curJsId?>" class="bx-set-constructor container-fluid set-constructor-element <?=$templateData['TEMPLATE_CLASS'];?>">
 	<div class="row">
 		<div class="col-xs-12">

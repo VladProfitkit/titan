@@ -8,6 +8,8 @@ $injectId = $arParams['UNIQ_COMPONENT_ID'];
 
 if (isset($arResult['REQUEST_ITEMS']))
 {
+    global $setOnTop;
+
 	// code to receive recommendations from the cloud
 	CJSCore::Init(array('ajax'));
 
@@ -20,7 +22,6 @@ if (isset($arResult['REQUEST_ITEMS']))
 	$signedTemplate = $signer->sign($arResult['RCM_TEMPLATE'], 'bx.bd.products.recommendation');
 
 	?>
-
 	<span id="<?=$injectId?>"></span>
 
 	<script type="text/javascript">
@@ -32,21 +33,30 @@ if (isset($arResult['REQUEST_ITEMS']))
 					'parameters':'<?=CUtil::JSEscape($signedParameters)?>',
 					'template': '<?=CUtil::JSEscape($signedTemplate)?>',
 					'site_id': '<?=CUtil::JSEscape(SITE_ID)?>',
-					'rcm': 'yes'
+					'rcm': 'yes',
+                    'set_on_top': '<?=$setOnTop?>',
+                    'detail_text': '<?=$GLOBALS['THIS_DETAIL_TEXT']?>'
 				}
 			);
 		});
 	</script>
+
 	<?
 	$frame->end();
 	return;
 
 	// \ end of the code to receive recommendations from the cloud
-}
+};
+
 if($arResult['ITEMS']){?>
+    <?global $isSetOnTop;
+    global $isDetailText;?>
 	<?$arResult['RID'] = ($arResult['RID'] ? $arResult['RID'] : (\Bitrix\Main\Context::getCurrent()->getRequest()->get('RID') != 'undefined' ? \Bitrix\Main\Context::getCurrent()->getRequest()->get('RID') : '' ));?>
 	<input type="hidden" name="bigdata_recommendation_id" value="<?=htmlspecialcharsbx($arResult['RID'])?>">
-	<span id="<?=$injectId?>_items" class="bigdata_recommended_products_items flexslider loading_state shadow border custom_flex top_right" data-plugin-options='{"animation": "slide", "animationSpeed": 600, "directionNav": true, "controlNav" :false, "animationLoop": true, "slideshow": false, "counts": [4,3,3,2,1]}'>
+    <?//var_dump($arResult["_ORIGINAL_PARAMS"])?>
+    <?//print_r($GLOBALS['THIS_DETAIL_TEXT']);?>
+    <?//echo $isDetailText;?>
+	<span id="<?=$injectId?>_items" class="bigdata_recommended_products_items flexslider loading_state shadow border custom_flex top_right" data-plugin-options='{"animation": "slide", "animationSpeed": 600, "directionNav": true, "controlNav" :false, "animationLoop": true, "slideshow": false, "counts": [<?=!$isSetOnTop || ($isSetOnTop && $isDetailText) ? '2,2,2,2,1' : '4,3,3,2,1' ;?>]}'>
         <!-- "controlsContainer": ".tabs_slider_navigation.RECOMENDATION_nav", -->
 		<ul class="tabs_slider RECOMENDATION_slides slides catalog_block">
 			<?foreach ($arResult['ITEMS'] as $key => $arItem){?>
@@ -184,4 +194,6 @@ if($arResult['ITEMS']){?>
 		$('.tabs li[data-code="RECOMENDATION"]').remove();
 	</script>
 <?}
-$frame->end();?>
+$frame->end();
+?>
+
