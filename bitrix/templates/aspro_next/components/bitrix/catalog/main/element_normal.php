@@ -642,5 +642,6 @@ if ($arNavParams){
 		$('.catalog_detail input[data-sid="PRODUCT_NAME"]').attr('value', $('h1').html());
 	});
 </script>
+
 <?/*fix title after ajax form end*/?>
 <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/jquery.history.js');?>

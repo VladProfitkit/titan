@@ -781,3 +781,8 @@ body .recom_block .flex-viewport {
     width: 100%;
     float: left;
 }
+
+.border .flex-direction-nav {
+    position: relative;
+    top: -27px;
+}

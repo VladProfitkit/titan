@@ -189,6 +189,9 @@
 
 		"VISIBLE_PROP_COUNT" => ($arParams['VISIBLE_PROP_COUNT'] ? $arParams['VISIBLE_PROP_COUNT'] : 4),
 		"USE_BIG_DATA" => $arParams['USE_BIG_DATA'],
+
+        "DETAIL_EXPANDABLES_TITLE" => $arParams["DETAIL_EXPANDABLES_TITLE"],
+        "DETAIL_ASSOCIATED_TITLE" => $arParams["DETAIL_ASSOCIATED_TITLE"],
 	),
 	$component
 );?>
