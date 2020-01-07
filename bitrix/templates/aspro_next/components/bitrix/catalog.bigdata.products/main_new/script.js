@@ -1496,7 +1496,7 @@ function bx_rcm_get_from_cloud(injectId, rcmParameters, localAjaxData)
 			response.items = [];
 		}
 		BX.ajax({
-			url: '/bitrix/components/bitrix/catalog.bigdata.products/ajax.php?'+BX.ajax.prepareData({'AJAX_ITEMS': response.items, 'RID': response.id}),
+			url: '/bitrix/templates/aspro_next/components/bitrix/catalog.bigdata.products/main_new/ajax.php?'+BX.ajax.prepareData({'AJAX_ITEMS': response.items, 'RID': response.id}),
 			method: 'POST',
 			data: localAjaxData,
 			dataType: 'html',
