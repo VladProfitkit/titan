@@ -415,7 +415,7 @@ $arViewedData = array(
                               <?foreach($arResult['OFFERS'] as $arOffer):?>
                                 <?if(!$arOffer['OFFER_GROUP']) continue;?>
                                       <span id="<?=$arItemIDs['ALL_ITEM_IDS']['OFFER_GROUP'].$arOffer['ID']?>" style="display: none;">
-                                        <?$APPLICATION->IncludeComponent("bitrix:catalog.set.constructor", "element",
+                                        <?$APPLICATION->IncludeComponent("bitrix:catalog.set.constructor", "element_bootstrap",
                                           array(
                                             "IBLOCK_ID" => $arResult["OFFERS_IBLOCK"],
                                             "ELEMENT_ID" => $arOffer['ID'],
@@ -436,7 +436,7 @@ $arViewedData = array(
                               <?endforeach;?>
                             <?endif;?>
                             <?else:?>
-                            <?$APPLICATION->IncludeComponent("bitrix:catalog.set.constructor", "element",
+                            <?$APPLICATION->IncludeComponent("bitrix:catalog.set.constructor", "element_bootstrap",
                               array(
                                 "IBLOCK_ID" => $arParams["IBLOCK_ID"],
                                 "ELEMENT_ID" => $arResult["ID"],
