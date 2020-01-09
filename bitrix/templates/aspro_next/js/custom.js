@@ -55,3 +55,15 @@ $('.payment_info_link').click( function(event){ // лoвим клик пo ссы
       );
   });
 });
+
+/*$(document).ready(function() {
+    var stickyOffset = $('.block-price-props .price-main').offset().top;
+
+    $(window).scroll(function () {
+        var sticky = $('.block-price-props .price-main'),
+            scroll = $(window).scrollTop();
+
+        if (scroll >= stickyOffset) sticky.addClass('fixed');
+        else sticky.removeClass('fixed');
+    });
+};*/

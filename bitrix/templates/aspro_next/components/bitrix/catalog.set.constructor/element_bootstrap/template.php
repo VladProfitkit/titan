@@ -31,15 +31,15 @@ if (!empty($arResult["SET_ITEMS"])) {
 ?>
 
 <div id="bx-set-const-<?=$curJsId?>" class="bx-set-constructor container-fluid set-constructor-element <?=$templateData['TEMPLATE_CLASS'];?>">
-	<div class="row">
+	<?/*<div class="row">
 		<div class="col-xs-12">
 			<strong class="bx-modal-small-title"><?=GetMessage("CATALOG_SET_BUY_SET")?></strong>
 		</div>
-	</div>
+	</div>*/?>
 	<div class="row info">
 		<div class="col-12">
 			<div class="bx-original-item-container">
-				<?if ($arResult["ELEMENT"]["DETAIL_PICTURE"]["src"]):?>
+				<?/*if ($arResult["ELEMENT"]["DETAIL_PICTURE"]["src"]):?>
 					<img src="<?=$arResult["ELEMENT"]["DETAIL_PICTURE"]["src"]?>" class="bx-original-item-image" alt="">
 				<?else:?>
 					<img src="<?=$this->GetFolder().'/images/no_foto.png'?>" class="bx-original-item-image" alt="">
@@ -50,7 +50,8 @@ if (!empty($arResult["SET_ITEMS"])) {
 					<span class="bx-added-item-new-price"><strong><?=$arResult["ELEMENT"]["PRICE_PRINT_DISCOUNT_VALUE"]?></strong> * <?=$arResult["ELEMENT"]["BASKET_QUANTITY"];?> <?=$arResult["ELEMENT"]["MEASURE"]["SYMBOL_RUS"];?></span>
 					<?if (!($arResult["ELEMENT"]["PRICE_VALUE"] == $arResult["ELEMENT"]["PRICE_DISCOUNT_VALUE"])):?><span class="bx-catalog-set-item-price-old"><strong><?=$arResult["ELEMENT"]["PRICE_PRINT_VALUE"]?></strong></span><?endif?>
 
-				</div>
+				</div>*/?>
+                <span>Также Вы можете добавить к товару:</span>
 			</div>
 		</div>
 		<div class="col-12">
@@ -58,7 +59,7 @@ if (!empty($arResult["SET_ITEMS"])) {
 				<div class="bx-added-item-table">
 					<div data-role="set-items">
 					<?foreach($arResult["SET_ITEMS"]["DEFAULT"] as $key => $arItem):?>
-						<div class="set-item row included"
+						<div class="set-item <?//row ?>included"
 							data-id="<?=$arItem["ID"]?>"
 							data-img="<?=$arItem["DETAIL_PICTURE"]["src"]?>"
 							data-url="<?=$arItem["DETAIL_PAGE_URL"]?>"
@@ -71,23 +72,23 @@ if (!empty($arResult["SET_ITEMS"])) {
 							data-measure="<?=$arItem["MEASURE"]["SYMBOL_RUS"];?>"
 							data-quantity="<?=$arItem["BASKET_QUANTITY"];?>"
 						>
-							<div class="bx-added-item-table-cell-img align-middle col-xs-3 col-md-2">
+							<div class="bx-added-item-table-cell-img<?// col-xs-3 col-md-2?>">
 								<?if ($arItem["DETAIL_PICTURE"]["src"]):?>
-									<img src="<?=$arItem["DETAIL_PICTURE"]["src"]?>" class="img-responsive" alt="<?//=$arItem["NAME"]?>" width="auto" height="50">
+									<img src="<?=$arItem["DETAIL_PICTURE"]["src"]?>" class="img-responsive" alt="<?//=$arItem["NAME"]?>" <?//width="auto" height="50"?>>
 								<?else:?>
-									<img src="<?=$this->GetFolder().'/images/no_foto.png'?>" class="img-responsive" alt="Нет фото" width="auto" height="50">
+									<img src="<?=$this->GetFolder().'/images/no_foto.png'?>" class="img-responsive" alt="Нет фото"<?// width="auto" height="50"?>>
 								<?endif?>
 							</div>
-							<div class="bx-added-item-table-cell-itemname align-middle col-xs-9 col-md-6">
+							<div class="bx-added-item-table-cell-itemname<?// col-xs-9 col-md-6?>">
 								<a class="tdn" href="<?=$arItem["DETAIL_PAGE_URL"]?>"><?=$arItem["NAME"]?></a>
 							</div>
-							<div class="bx-added-item-table-cell-price align-middle col-xs-9 col-md-3">
+							<div class="bx-added-item-table-cell-price<?// col-xs-9 col-md-3?>">
 								<span class="bx-added-item-new-price"><?=$arItem["PRICE_PRINT_DISCOUNT_VALUE"]?> * <?=$arItem["BASKET_QUANTITY"];?> <?=$arItem["MEASURE"]["SYMBOL_RUS"];?></span>
 								<?if ($arItem["PRICE_VALUE"] != $arItem["PRICE_DISCOUNT_VALUE"]):?>
 									<br><span class="bx-added-item-old-price"><?=$arItem["PRICE_PRINT_VALUE"]?></span>
 								<?endif?>
 							</div>
-                            <div class="bx-added-item-table-cell-del align-middle col-xs-3 col-md-1">
+                            <div class="bx-added-item-table-cell-del<?// col-xs-3 col-md-1?>">
                                 <div class="bx-added-item-delete"<?// data-role="set-delete-btn"?>>
                                     <input class="set-product-toggle" id="toggle-input-<?=$arItem["ID"]?>" type="checkbox" checked>
                                     <label for="toggle-input-<?=$arItem["ID"]?>" class="set-product-toggle-label" data-role="set-delete-btn"></label>
