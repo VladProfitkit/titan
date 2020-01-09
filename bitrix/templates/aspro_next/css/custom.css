@@ -492,7 +492,6 @@ footer .footer_inner {
 }
 
 .tabs_slider_container.vertical .item_info {
-    display: ;
     padding: 0 10px;
     text-align: left;
 }
@@ -508,6 +507,18 @@ footer .footer_inner {
     opacity: 1 !important;
     margin-top: 5px !important;
     margin-left: 0 !important;
+    background-color: #e7e7e7;
+    transition: background-color .3s ease;
+}
+
+.fast_view_block_vertical:hover {
+    background-color: #eee;
+}
+
+.bottom_slider.vertical > .tabs_content {
+    /*height: 118px !important;*/
+    max-height: 472px;
+    /*height: 100% !important;*/
 }
 
 @media all and (max-width: 1490px){
