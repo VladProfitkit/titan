@@ -54,7 +54,7 @@ if($arResult['ITEMS']){?>
 	<?$arResult['RID'] = ($arResult['RID'] ? $arResult['RID'] : (\Bitrix\Main\Context::getCurrent()->getRequest()->get('RID') != 'undefined' ? \Bitrix\Main\Context::getCurrent()->getRequest()->get('RID') : '' ));?>
 	<input type="hidden" name="bigdata_recommendation_id" value="<?=htmlspecialcharsbx($arResult['RID'])?>">
     <?if ((!$isSetOnTop) || ($isSetOnTop && $isDetailText)):?>
-	<span id="<?=$injectId?>_items" class="bigdata_recommended_products_items flexslider loading_state shadow border custom_flex top_right vertical" data-plugin-options='{"direction": "vertical", "animation": "slide", "animationSpeed": 600, "directionNav": true, "controlNav": false, "animationLoop": true, "slideshow": false, "counts": [5,5,5,5,5]}'>
+	<span id="<?=$injectId?>_items" class="bigdata_recommended_products_items <?//flexslider loading_state?> shadow border custom_flex top_right vertical" <?//data-plugin-options='{"direction": "vertical", "animation": "slide", "animationSpeed": 600, "directionNav": true, "controlNav": false, "animationLoop": true, "slideshow": false, "counts": [5,5,5,5,5]}'?>>
         <ul class="tabs_slider RECOMENDATION_slides slides catalog_block">
 			<?foreach ($arResult['ITEMS'] as $key => $arItem){?>
               <?$strMainID = $this->GetEditAreaId($arItem['ID'] . $key);?>
@@ -82,16 +82,7 @@ if($arResult['ITEMS']){?>
 					<div class="inner_wrap">
 						<div class="image_wrapper_block">
 							<a href="<?=$arItem["DETAIL_PAGE_URL"]?><?=($arResult["RID"] ? '?RID='.$arResult["RID"] : '')?>" class="thumb shine">
-								<div class="stickers">
-									<?$prop = ($arParams["STIKERS_PROP"] ? $arParams["STIKERS_PROP"] : "HIT");?>
-                                  <?foreach(CNext::GetItemStickers($arItem["PROPERTIES"][$prop]) as $arSticker):?>
-                                      <div><div class="<?=$arSticker['CLASS']?>"><?=$arSticker['VALUE']?></div></div>
-                                  <?endforeach;?>
-                                  <?if($arParams["SALE_STIKER"] && $arItem["PROPERTIES"][$arParams["SALE_STIKER"]]["VALUE"]){?>
-                                      <div><div class="sticker_sale_text"><?=$arItem["PROPERTIES"][$arParams["SALE_STIKER"]]["VALUE"];?></div></div>
-                                  <?}?>
-								</div>
-								<?if($arParams["DISPLAY_WISH_BUTTONS"] != "N" || $arParams["DISPLAY_COMPARE"] == "Y"):?>
+								<?/*if($arParams["DISPLAY_WISH_BUTTONS"] != "N" || $arParams["DISPLAY_COMPARE"] == "Y"):?>
                                     <div class="like_icons">
 										<?if($arAddToBasketData["CAN_BUY"] && empty($arItem["OFFERS"]) && $arParams["DISPLAY_WISH_BUTTONS"] != "N"):?>
                                             <div class="wish_item_button" <?=($arAddToBasketData["CAN_BUY"] ? '' : 'style="display:none"');?>>
@@ -106,7 +97,7 @@ if($arResult['ITEMS']){?>
 											</div>
                                       <?endif;?>
 									</div>
-                                <?endif;?>
+                                <?endif;*/?>
                               <?
                               $a_alt = ($arItem["PREVIEW_PICTURE"] && strlen($arItem["PREVIEW_PICTURE"]['DESCRIPTION']) ? $arItem["PREVIEW_PICTURE"]['DESCRIPTION'] : ($arItem["IPROPERTY_VALUES"]["ELEMENT_PREVIEW_PICTURE_FILE_ALT"] ? $arItem["IPROPERTY_VALUES"]["ELEMENT_PREVIEW_PICTURE_FILE_ALT"] : $arItem["NAME"] ));
                               $a_title = ($arItem["PREVIEW_PICTURE"] && strlen($arItem["PREVIEW_PICTURE"]['DESCRIPTION']) ? $arItem["PREVIEW_PICTURE"]['DESCRIPTION'] : ($arItem["IPROPERTY_VALUES"]["ELEMENT_PREVIEW_PICTURE_FILE_TITLE"] ? $arItem["IPROPERTY_VALUES"]["ELEMENT_PREVIEW_PICTURE_FILE_TITLE"] : $arItem["NAME"] ));
@@ -119,11 +110,11 @@ if($arResult['ITEMS']){?>
                               <?else:?>
                                   <img border="0" src="<?=SITE_TEMPLATE_PATH?>/images/no_photo_medium.png" alt="<?=$a_alt;?>" title="<?=$a_title;?>" />
                               <?endif;?>
-                              <?if($fast_view_text_tmp = CNext::GetFrontParametrValue('EXPRESSION_FOR_FAST_VIEW'))
+                              <?/*if($fast_view_text_tmp = CNext::GetFrontParametrValue('EXPRESSION_FOR_FAST_VIEW'))
                                 $fast_view_text = $fast_view_text_tmp;
                               else
                                 $fast_view_text = GetMessage('FAST_VIEW');?>
-								<div class="fast_view_block" data-event="jqm" data-param-form_id="fast_view" data-param-iblock_id="<?=$arItem["IBLOCK_ID"];?>" data-param-id="<?=$arItem["ID"];?>" data-param-item_href="<?=urlencode($arItem["DETAIL_PAGE_URL"]);?>" data-name="fast_view"><?=$fast_view_text;?></div>
+								<div class="fast_view_block" data-event="jqm" data-param-form_id="fast_view" data-param-iblock_id="<?=$arItem["IBLOCK_ID"];?>" data-param-id="<?=$arItem["ID"];?>" data-param-item_href="<?=urlencode($arItem["DETAIL_PAGE_URL"]);?>" data-name="fast_view"><?=$fast_view_text;?></div>*/?>
 							</a>
 						</div>
 						<div class="item_info">
@@ -149,32 +140,46 @@ if($arResult['ITEMS']){?>
                                     );?>
 								</div>
                             <?endif;?>
-							<div class="sa_block">
+							<?/*<div class="sa_block">
 								<?=$arQuantityData["HTML"];?>
-							</div>
-							<div class="cost prices clearfix">
-								<?if($arItem["OFFERS"]):?>
-                                  <?\Aspro\Functions\CAsproSku::showItemPrices($arParams, $arItem, $item_id, $min_price_id, array(), 'Y');?>
-                                <?else:?>
-                                  <?
-                                  if(isset($arItem['PRICE_MATRIX']) && $arItem['PRICE_MATRIX']) // USE_PRICE_COUNT
-                                  {?>
-                                    <?if($arItem['ITEM_PRICE_MODE'] == 'Q' && count($arItem['PRICE_MATRIX']['ROWS']) > 1):?>
-                                    <?=CNext::showPriceRangeTop($arItem, $arParams, GetMessage("CATALOG_ECONOMY"));?>
-                                  <?endif;?>
-                                    <?=CNext::showPriceMatrix($arItem, $arParams, $strMeasure, $arAddToBasketData);?>
-                                    <?
-                                  }
-                                  elseif($arItem["PRICES"])
-                                  {?>
-                                    <?\Aspro\Functions\CAsproItem::showItemPrices($arParams, $arItem["PRICES"], $strMeasure, $min_price_id, 'Y');?>
-                                  <?}?>
-                                <?endif;?>
-							</div>
+							</div>*/?>
 						</div>
-						<div class="footer_button">
-							<?=$arAddToBasketData["HTML"]?>
-						</div>
+                        <div class="cost prices <?//clearfix?>">
+                            <?if($arItem["OFFERS"]):?>
+                              <?\Aspro\Functions\CAsproSku::showItemPrices($arParams, $arItem, $item_id, $min_price_id, array(), 'Y');?>
+                            <?else:?>
+                              <?
+                              if(isset($arItem['PRICE_MATRIX']) && $arItem['PRICE_MATRIX']) // USE_PRICE_COUNT
+                              {?>
+                                <?if($arItem['ITEM_PRICE_MODE'] == 'Q' && count($arItem['PRICE_MATRIX']['ROWS']) > 1):?>
+                                <?=CNext::showPriceRangeTop($arItem, $arParams, GetMessage("CATALOG_ECONOMY"));?>
+                              <?endif;?>
+                                <?=CNext::showPriceMatrix($arItem, $arParams, $strMeasure, $arAddToBasketData);?>
+                                <?
+                              }
+                              elseif($arItem["PRICES"])
+                              {?>
+                                <?\Aspro\Functions\CAsproItem::showItemPrices($arParams, $arItem["PRICES"], $strMeasure, $min_price_id, 'Y');?>
+                              <?}?>
+                            <?endif;?>
+                            <div class="stickers">
+                                <?$prop = ($arParams["STIKERS_PROP"] ? $arParams["STIKERS_PROP"] : "HIT");?>
+                              <?foreach(CNext::GetItemStickers($arItem["PROPERTIES"][$prop]) as $arSticker):?>
+                                  <div><div class="<?=$arSticker['CLASS']?>"><?=$arSticker['VALUE']?></div></div>
+                              <?endforeach;?>
+                              <?if($arParams["SALE_STIKER"] && $arItem["PROPERTIES"][$arParams["SALE_STIKER"]]["VALUE"]){?>
+                                  <div><div class="sticker_sale_text"><?=$arItem["PROPERTIES"][$arParams["SALE_STIKER"]]["VALUE"];?></div></div>
+                              <?}?>
+                            </div>
+                        </div>
+                        <div class="<?//footer_button ?>details_button">
+                          <?=$arAddToBasketData["HTML"]?>
+                          <?if($fast_view_text_tmp = CNext::GetFrontParametrValue('EXPRESSION_FOR_FAST_VIEW'))
+                                $fast_view_text = $fast_view_text_tmp;
+                              else
+                                $fast_view_text = GetMessage('FAST_VIEW');?>
+								<div class="fast_view_block fast_view_block_vertical" data-event="jqm" data-param-form_id="fast_view" data-param-iblock_id="<?=$arItem["IBLOCK_ID"];?>" data-param-id="<?=$arItem["ID"];?>" data-param-item_href="<?=urlencode($arItem["DETAIL_PAGE_URL"]);?>" data-name="fast_view"><?=$fast_view_text;?></div>
+                        </div>
 					</div>
 				</li>
             <?}?>

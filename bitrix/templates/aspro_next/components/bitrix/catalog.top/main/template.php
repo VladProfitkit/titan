@@ -34,18 +34,7 @@ $arNotify = unserialize($notifyOption);
         <li id="<?=$this->GetEditAreaId($arItem['ID']);?>" class="catalog_item visible">
           <div class="inner_wrap">
             <div class="image_wrapper_block">
-              <?if($arItem["PROPERTIES"]["HIT"]["VALUE"]){?>
-                <div class="stickers">
-                  <?$prop = ($arParams["STIKERS_PROP"] ? $arParams["STIKERS_PROP"] : "HIT");?>
-                  <?foreach(CNext::GetItemStickers($arItem["PROPERTIES"][$prop]) as $arSticker):?>
-                    <div><div class="<?=$arSticker['CLASS']?>"><?=$arSticker['VALUE']?></div></div>
-                  <?endforeach;?>
-                  <?if($arParams["SALE_STIKER"] && $arItem["PROPERTIES"][$arParams["SALE_STIKER"]]["VALUE"]){?>
-                    <div><div class="sticker_sale_text"><?=$arItem["PROPERTIES"][$arParams["SALE_STIKER"]]["VALUE"];?></div></div>
-                  <?}?>
-                </div>
-              <?}?>
-              <?if($arParams["DISPLAY_WISH_BUTTONS"] != "N" || $arParams["DISPLAY_COMPARE"] == "Y"):?>
+              <?/*if($arParams["DISPLAY_WISH_BUTTONS"] != "N" || $arParams["DISPLAY_COMPARE"] == "Y"):?>
                 <div class="like_icons">
                   <?if($arAddToBasketData["CAN_BUY"] && empty($arItem["OFFERS"]) && $arParams["DISPLAY_WISH_BUTTONS"] != "N"):?>
                     <div class="wish_item_button" <?=($arAddToBasketData['CAN_BUY'] ? '' : 'style="display:none"');?>>
@@ -60,7 +49,7 @@ $arNotify = unserialize($notifyOption);
                     </div>
                   <?endif;?>
                 </div>
-              <?endif;?>
+              <?endif;*/?>
               <a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="thumb shine">
                 <?
                 $a_alt = ($arItem["PREVIEW_PICTURE"] && strlen($arItem["PREVIEW_PICTURE"]['DESCRIPTION']) ? $arItem["PREVIEW_PICTURE"]['DESCRIPTION'] : ($arItem["IPROPERTY_VALUES"]["ELEMENT_PREVIEW_PICTURE_FILE_ALT"] ? $arItem["IPROPERTY_VALUES"]["ELEMENT_PREVIEW_PICTURE_FILE_ALT"] : $arItem["NAME"] ));
@@ -126,6 +115,17 @@ $arNotify = unserialize($notifyOption);
                   <?\Aspro\Functions\CAsproItem::showItemPrices($arParams, $arItem["PRICES"], $strMeasure, $min_price_id, 'Y');?>
                 <?}?>
               <?endif;?>
+              <?if($arItem["PROPERTIES"]["HIT"]["VALUE"]){?>
+                  <div class="stickers">
+                    <?$prop = ($arParams["STIKERS_PROP"] ? $arParams["STIKERS_PROP"] : "HIT");?>
+                    <?foreach(CNext::GetItemStickers($arItem["PROPERTIES"][$prop]) as $arSticker):?>
+                        <div><div class="<?=$arSticker['CLASS']?>"><?=$arSticker['VALUE']?></div></div>
+                    <?endforeach;?>
+                    <?if($arParams["SALE_STIKER"] && $arItem["PROPERTIES"][$arParams["SALE_STIKER"]]["VALUE"]){?>
+                        <div><div class="sticker_sale_text"><?=$arItem["PROPERTIES"][$arParams["SALE_STIKER"]]["VALUE"];?></div></div>
+                    <?}?>
+                  </div>
+              <?}?>
             </div>
 
             <div class="<?//footer_button ?>details_button">
