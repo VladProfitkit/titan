@@ -64,7 +64,7 @@ if($arResult['ITEMS']){?>
                     $arQuantityData = CNext::GetQuantityArray($totalCount);
                     $arItem["FRONT_CATALOG"]="Y";
                     $arItem["RID"]=$arResult["RID"];
-                    $arAddToBasketData = CNext::GetAddToBasketArray($arItem, $totalCount, $arParams["DEFAULT_COUNT"], $arParams["BASKET_URL"], true);
+                    $arAddToBasketData = CNext::GetAddToBasketArray($arItem, $totalCount, $arParams["DEFAULT_COUNT"], $arParams["BASKET_URL"], /*true*/false);
 
                     $elementName = ((isset($arItem['IPROPERTY_VALUES']['ELEMENT_PAGE_TITLE']) && $arItem['IPROPERTY_VALUES']['ELEMENT_PAGE_TITLE']) ? $arItem['IPROPERTY_VALUES']['ELEMENT_PAGE_TITLE'] : $arItem['NAME']);
 
@@ -197,7 +197,7 @@ if($arResult['ITEMS']){?>
                     $arQuantityData = CNext::GetQuantityArray($totalCount);
                     $arItem["FRONT_CATALOG"]="Y";
                     $arItem["RID"]=$arResult["RID"];
-                    $arAddToBasketData = CNext::GetAddToBasketArray($arItem, $totalCount, $arParams["DEFAULT_COUNT"], $arParams["BASKET_URL"], true);
+                    $arAddToBasketData = CNext::GetAddToBasketArray($arItem, $totalCount, $arParams["DEFAULT_COUNT"], $arParams["BASKET_URL"], /*true*/false);
 
                     $elementName = ((isset($arItem['IPROPERTY_VALUES']['ELEMENT_PAGE_TITLE']) && $arItem['IPROPERTY_VALUES']['ELEMENT_PAGE_TITLE']) ? $arItem['IPROPERTY_VALUES']['ELEMENT_PAGE_TITLE'] : $arItem['NAME']);
 
