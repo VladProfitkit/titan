@@ -603,6 +603,19 @@ footer .footer_inner {
     justify-content: center;
 }
 
+.price_txt > p {
+    padding-bottom: 10px;
+}
+
+.price_txt .payments_block {
+    margin-top: 0;
+}
+
+.price_txt .payment_and_delivery ul {
+    margin-bottom: 0;
+    text-align: left;
+}
+
 @media (min-width: 601px) and (max-width: 1199px) {
     .vertical .inner_wrap {
         flex-wrap: wrap !important;

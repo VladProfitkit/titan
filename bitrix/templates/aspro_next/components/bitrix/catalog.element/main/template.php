@@ -310,7 +310,7 @@ $arViewedData = array(
 
                 <?$APPLICATION->IncludeFile(SITE_DIR."include/element_detail_text.php", Array(), Array("MODE" => "html",  "NAME" => GetMessage('CT_BCE_CATALOG_DOP_DESCR')));?>
                 <div class="payment_and_delivery">
-                  <ul class="btn btn-default transition_bg basket read_more" >
+                  <ul class="<?//btn btn-default transition_bg ?>basket read_more" >
                     <?if($arResult['PRICE_MATRIX']['MATRIX'][1]['ZERO-INF']['PRICE']<20000)
                     {?>
                       <li><a href="#" class="delivery_info_link" >Доставка</a> <span>500 р.</span></li>
@@ -498,8 +498,54 @@ $arViewedData = array(
                     </div>
                     <div class="price-main">
                         <div class="prices_block">
+                        <? if($arResult['PROPERTIES']['ARCHIV_TOV']['VALUE'] != 'Да'): ?>
+                            <div class="cost prices<?// clearfix?>">
+                                <?if( count( $arResult["OFFERS"] ) > 0 ){?>
+                                    <div class="with_matrix" style="display:none;">
+                                        <div class="price price_value_block"><span class="values_wrapper"></span></div>
+                                        <?if($arParams["SHOW_OLD_PRICE"]=="Y"):?>
+                                            <div class="price discount"></div>
+                                        <?endif;?>
+                                        <?if($arParams["SHOW_DISCOUNT_PERCENT"]=="Y"){?>
+                                            <div class="sale_block matrix" style="display:none;">
+                                                <span class="title"><?=GetMessage("CATALOG_ECONOMY");?></span>
+                                                <div class="text"><span class="values_wrapper"></span></div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        <?}?>
+                                    </div>
+                                    <?\Aspro\Functions\CAsproSku::showItemPrices($arParams, $arResult, $item_id, $min_price_id, $arItemIDs, 'Y');?>
+                                <?}else{?>
+                                    <?
+                                    $item_id = $arResult["ID"];
+                                    if(isset($arResult['PRICE_MATRIX']) && $arResult['PRICE_MATRIX']) // USE_PRICE_COUNT
+                                    {
+                                        if($arResult['PRICE_MATRIX']['COLS'])
+                                        {
+                                            $arCurPriceType = current($arResult['PRICE_MATRIX']['COLS']);
+                                            $arCurPrice = current($arResult['PRICE_MATRIX']['MATRIX'][$arCurPriceType['ID']]);
+                                            $min_price_id = $arCurPriceType['ID'];?>
+                                            <div class="" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                                                <meta itemprop="price" content="<?=($arResult['MIN_PRICE']['DISCOUNT_VALUE'] ? $arResult['MIN_PRICE']['DISCOUNT_VALUE'] : $arResult['MIN_PRICE']['VALUE'])?>" />
+                                                <meta itemprop="priceCurrency" content="<?=$arResult['MIN_PRICE']['CURRENCY']?>" />
+                                                <link itemprop="availability" href="http://schema.org/<?=($arResult['PRICE_MATRIX']['AVAILABLE'] == 'Y' ? 'InStock' : 'OutOfStock')?>" />
+                                            </div>
+                                        <?}?>
+                                        <?if($arResult['ITEM_PRICE_MODE'] == 'Q' && count($arResult['PRICE_MATRIX']['ROWS']) > 1):?>
+                                        <?=CNext::showPriceRangeTop($arResult, $arParams, GetMessage("CATALOG_ECONOMY"));?>
+                                    <?endif;?>
+                                        <?=CNext::showPriceMatrix($arResult, $arParams, $strMeasure, $arAddToBasketData);?>
+                                        <?
+                                    }
+                                    else
+                                    {?>
+                                        <?\Aspro\Functions\CAsproItem::showItemPrices($arParams, $arResult["PRICES"], $strMeasure, $min_price_id, 'Y');?>
+                                    <?}?>
+                                <?}?>
+                            </div>
+                          <?endif; ?>
                           <? if($arResult['PROPERTIES']['ARCHIV_TOV']['VALUE'] != 'Да'): ?>
-                              <div class="quantity_block_wrapper">
+                              <div class="quantity_block_wrapper clearfix">
                                 <?if($useStores){?>
                                   <div class="p_block">
                                     <?}?>
@@ -512,52 +558,6 @@ $arViewedData = array(
                                         <span class="animate-load" data-event="jqm" data-param-form_id="CHEAPER" data-name="cheaper" data-autoload-product_name="<?=CNext::formatJsName($arResult["NAME"]);?>" data-autoload-product_id="<?=$arResult["ID"];?>"><?=($arParams["CHEAPER_FORM_NAME"] ? $arParams["CHEAPER_FORM_NAME"] : GetMessage("CHEAPER"));?></span>
                                     </div>
                                 <?endif;?>
-                              </div>
-                          <? endif; ?>
-                          <? if($arResult['PROPERTIES']['ARCHIV_TOV']['VALUE'] != 'Да'): ?>
-                              <div class="cost prices clearfix">
-                                <?if( count( $arResult["OFFERS"] ) > 0 ){?>
-                                    <div class="with_matrix" style="display:none;">
-                                        <div class="price price_value_block"><span class="values_wrapper"></span></div>
-                                      <?if($arParams["SHOW_OLD_PRICE"]=="Y"):?>
-                                          <div class="price discount"></div>
-                                      <?endif;?>
-                                      <?if($arParams["SHOW_DISCOUNT_PERCENT"]=="Y"){?>
-                                          <div class="sale_block matrix" style="display:none;">
-                                              <span class="title"><?=GetMessage("CATALOG_ECONOMY");?></span>
-                                              <div class="text"><span class="values_wrapper"></span></div>
-                                              <div class="clearfix"></div>
-                                          </div>
-                                      <?}?>
-                                    </div>
-                                  <?\Aspro\Functions\CAsproSku::showItemPrices($arParams, $arResult, $item_id, $min_price_id, $arItemIDs, 'Y');?>
-                                <?}else{?>
-                                  <?
-                                  $item_id = $arResult["ID"];
-                                  if(isset($arResult['PRICE_MATRIX']) && $arResult['PRICE_MATRIX']) // USE_PRICE_COUNT
-                                  {
-                                    if($arResult['PRICE_MATRIX']['COLS'])
-                                    {
-                                      $arCurPriceType = current($arResult['PRICE_MATRIX']['COLS']);
-                                      $arCurPrice = current($arResult['PRICE_MATRIX']['MATRIX'][$arCurPriceType['ID']]);
-                                      $min_price_id = $arCurPriceType['ID'];?>
-                                        <div class="" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                                            <meta itemprop="price" content="<?=($arResult['MIN_PRICE']['DISCOUNT_VALUE'] ? $arResult['MIN_PRICE']['DISCOUNT_VALUE'] : $arResult['MIN_PRICE']['VALUE'])?>" />
-                                            <meta itemprop="priceCurrency" content="<?=$arResult['MIN_PRICE']['CURRENCY']?>" />
-                                            <link itemprop="availability" href="http://schema.org/<?=($arResult['PRICE_MATRIX']['AVAILABLE'] == 'Y' ? 'InStock' : 'OutOfStock')?>" />
-                                        </div>
-                                    <?}?>
-                                    <?if($arResult['ITEM_PRICE_MODE'] == 'Q' && count($arResult['PRICE_MATRIX']['ROWS']) > 1):?>
-                                    <?=CNext::showPriceRangeTop($arResult, $arParams, GetMessage("CATALOG_ECONOMY"));?>
-                                  <?endif;?>
-                                    <?=CNext::showPriceMatrix($arResult, $arParams, $strMeasure, $arAddToBasketData);?>
-                                    <?
-                                  }
-                                  else
-                                  {?>
-                                    <?\Aspro\Functions\CAsproItem::showItemPrices($arParams, $arResult["PRICES"], $strMeasure, $min_price_id, 'Y');?>
-                                  <?}?>
-                                <?}?>
                               </div>
                           <? endif; ?>
                           <?if($arParams["SHOW_DISCOUNT_TIME"]=="Y"){?>
