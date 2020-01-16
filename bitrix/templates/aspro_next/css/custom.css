@@ -616,6 +616,16 @@ footer .footer_inner {
     text-align: left;
 }
 
+.element_detail_text.mobile_only {
+    display: none;
+}
+
+.block-price-props .quantity_block_wrapper,
+.block-price-props .buy_block {
+    display: flex;
+    flex-direction: column;
+}
+
 @media (min-width: 601px) and (max-width: 1199px) {
     .vertical .inner_wrap {
         flex-wrap: wrap !important;
@@ -715,6 +725,35 @@ footer .footer_inner {
 @media (max-width: 600px) {
     .catalog_detail .item_main_info .right_info .info_item {
         padding: 0 10px 0;
+    }
+
+    .element_detail_text.mobile_only {
+        display: block;
+    }
+
+    .element_detail_text.mobile_only .delivery_info,
+    .element_detail_text.mobile_only .payments_block {
+        width: 260px;
+        margin: 0 auto !important;
+    }
+
+    .bx-constructor-result-table .bx-constructor-result-table-value {
+        text-align: right !important;
+    }
+
+    .block-price-props .props-top {
+        padding-right: 0 !important;
+    }
+
+    .block-price-props .prices_block,
+    .block-price-props .buy_block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .price_matrix_wrapper > .price {
+        padding-right: 0 !important;
     }
 }
 

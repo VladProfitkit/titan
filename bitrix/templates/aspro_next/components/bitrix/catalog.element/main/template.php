@@ -1289,7 +1289,7 @@ $arViewedData = array(
                 <?endforeach;?>
             </div>
         <?endif;?>
-        <?/*<div class="element_detail_text wrap_md">
+        <div class="element_detail_text wrap_md mobile_only">
             <div class="price_txt">
 
                 <?$APPLICATION->IncludeFile(SITE_DIR."include/element_detail_text.php", Array(), Array("MODE" => "html",  "NAME" => GetMessage('CT_BCE_CATALOG_DOP_DESCR')));?>
@@ -1315,7 +1315,7 @@ $arViewedData = array(
                 </div>
                 <div class="clearfix"></div>
             </div>
-        </div>*/?>
+        </div>
     </div>
 </div>
 <?$bPriceCount = ($arParams['USE_PRICE_COUNT'] == 'Y');?>
