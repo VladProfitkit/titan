@@ -28,21 +28,6 @@ $(document).ready(function (){
 
 	$('.items-services .item').sliceHeight();
 
-	$(document).on({
-		mouseover: function(e){
-			e.stopImmediatePropagation();
-			var tabsContentHover = $(this).closest('.tab').attr('data-hover') * 1;
-			$(this).closest('.tab').fadeTo(100, 1);
-			$(this).closest('.tab').stop().css({'height': tabsContentHover});
-			$(this).closest('.flex-viewport').stop().css({'height': tabsContentHover});
-		},
-		mouseleave: function(e){
-			e.stopImmediatePropagation();
-			var tabsContentUnhoverHover = $(this).closest('.tab').attr('data-unhover') * 1;
-			$(this).closest('.tab').stop().animate({'height': tabsContentUnhoverHover}, 100);
-			$(this).closest('.flex-viewport').stop().css({'height': tabsContentUnhoverHover});
-		}
-	}, '.tabs_slider > li');
 
 	$(".opener").click(function(){
 		$(this).find(".opener_icon").toggleClass("opened");
