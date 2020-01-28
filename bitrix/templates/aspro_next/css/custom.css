@@ -470,7 +470,7 @@ footer .footer_inner {
     overflow-x: visible;
 }
 
-.vertical .image_wrapper_block {
+.tabs_slider_container.vertical .image_wrapper_block {
     flex-basis: 80px;
     flex-grow: 0;
     flex-shrink: 0;

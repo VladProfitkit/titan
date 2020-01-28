@@ -1496,7 +1496,7 @@ $arViewedData = array(
     </div>
   <?endif;*/?>
   <?if(($arAccessories || $arExpValues || !isset($arParams['USE_BIG_DATA']) || $arParams['USE_BIG_DATA'] != 'N') && $setOnTop == true):?>
-    <div class="col-<?=(!empty($arResult["DETAIL_TEXT"])) && ($arAccessories || $arExpValues || !isset($arParams['USE_BIG_DATA']) || $arParams['USE_BIG_DATA'] != 'N') ? 'xs-12 col-md-6' : 'xs-12' ?>">
+    <div class="col-xs-12">
       <?$bViewBlock = ($arParams["VIEW_BLOCK_TYPE"] == "Y");?>
       <?
       $arTab=array();
@@ -1516,7 +1516,7 @@ $arViewedData = array(
             <?endif;*/?>
 
       <?if($bViewBlock):?>
-        <div class="bottom_slider specials tab_slider_wrapp block_v <?=/*(*/$setOnTop==false/*) || ($setOnTop==true && $arResult["DETAIL_TEXT"])*/ ? 'vertical' : '';?>">
+        <div class="bottom_slider specials tab_slider_wrapp block_v">
           <?if($arTab):?>
             <?foreach($arTab as $code=>$title):?>
               <div class="wraps">
@@ -1692,7 +1692,7 @@ $arViewedData = array(
           <?endif;?>
         </div>
       <?else:?>
-        <div class="bottom_slider specials tab_slider_wrapp <?=/*(*/$setOnTop==false/*) || ($setOnTop==true && $arResult["DETAIL_TEXT"])*/ ? 'vertical' : '';?>">
+        <div class="bottom_slider specials tab_slider_wrapp">
           <div class="top_blocks">
             <ul class="tabs">
               <?$i=1;

@@ -53,7 +53,7 @@ if($arResult['ITEMS']){?>
     global $isDetailText;?>
 	<?$arResult['RID'] = ($arResult['RID'] ? $arResult['RID'] : (\Bitrix\Main\Context::getCurrent()->getRequest()->get('RID') != 'undefined' ? \Bitrix\Main\Context::getCurrent()->getRequest()->get('RID') : '' ));?>
 	<input type="hidden" name="bigdata_recommendation_id" value="<?=htmlspecialcharsbx($arResult['RID'])?>">
-    <?if ((!$isSetOnTop) || ($isSetOnTop && $isDetailText)):?>
+    <?if (/*(*/!$isSetOnTop/*) || ($isSetOnTop && $isDetailText)*/):?>
 	<span id="<?=$injectId?>_items" class="bigdata_recommended_products_items <?//flexslider loading_state?> shadow border custom_flex top_right vertical" <?//data-plugin-options='{"direction": "vertical", "animation": "slide", "animationSpeed": 600, "directionNav": true, "controlNav": false, "animationLoop": true, "slideshow": false, "counts": [5,5,5,5,5]}'?>>
         <ul class="tabs_slider RECOMENDATION_slides slides catalog_block">
 			<?foreach ($arResult['ITEMS'] as $key => $arItem){?>
