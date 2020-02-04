@@ -186,6 +186,6 @@
 		</div>
 		
 		<div id="overlay"></div><!-- Пoдлoжкa -->
-
+<script src="/bitrix/templates/aspro_next/components/bitrix/catalog.bigdata.products/main_new/script.js"></script>
 	</body>
 </html>

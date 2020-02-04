@@ -762,7 +762,7 @@ $arViewedData = array(
                 );?>
               <?endif;?>
 
-              <?if(($arAccessories || $arExpValues/* || !isset($arParams['USE_BIG_DATA']) || $arParams['USE_BIG_DATA'] != 'N'*/) && $setOnTop == false):?>
+              <?if(($arAccessories || $arExpValues || !isset($arParams['USE_BIG_DATA']) || $arParams['USE_BIG_DATA'] != 'N') && $setOnTop == false):?>
                   <div class="top-tabs-block">
                     <?$bViewBlock = ($arParams["VIEW_BLOCK_TYPE"] == "Y");?>
                     <?
@@ -779,7 +779,7 @@ $arViewedData = array(
                     ?>
 
                     <?if($bViewBlock):?>
-                        <div class="bottom_slider specials tab_slider_wrapp block_v <?=($setOnTop==false) || ($setOnTop==true && $arResult["DETAIL_TEXT"]) ? 'vertical' : '';?>">
+                        <div class="bottom_slider specials tab_slider_wrapp block_v <?=/*(*/$setOnTop==false/*) || ($setOnTop==true && $arResult["DETAIL_TEXT"])*/ ? 'vertical' : '';?>">
                           <?if($arTab):?>
                             <?foreach($arTab as $code=>$title):?>
                                   <div class="wraps">
@@ -951,7 +951,7 @@ $arViewedData = array(
                           <?endif;?>
                         </div>
                     <?else:?>
-                        <div class="bottom_slider specials tab_slider_wrapp <?=($setOnTop==false) || ($setOnTop==true && $arResult["DETAIL_TEXT"]) ? 'vertical' : '';?>">
+                        <div class="bottom_slider specials tab_slider_wrapp <?=/*(*/$setOnTop==false/*) || ($setOnTop==true && $arResult["DETAIL_TEXT"])*/ ? 'vertical' : '';?>">
                             <div class="top_blocks">
                                 <ul class="tabs">
                                   <?$i=1;
@@ -1136,7 +1136,7 @@ $arViewedData = array(
                   </div>
               <?endif;?>
 
-              <?if((!$arAccessories && !$arExpValues/* && isset($arParams['USE_BIG_DATA']) && $arParams['USE_BIG_DATA'] == 'N'*/) && $setOnTop == false):?>
+              <?if((!$arAccessories && !$arExpValues && isset($arParams['USE_BIG_DATA']) && $arParams['USE_BIG_DATA'] == 'N') && $setOnTop == false):?>
                 <?$APPLICATION->IncludeComponent(
                   "bitrix:news.list",
                   "product_akc",
@@ -1488,7 +1488,7 @@ $arViewedData = array(
   </div>
 </div>
 
-<?if($arResult["DETAIL_TEXT"] || (($arAccessories || $arExpValues || !isset($arParams['USE_BIG_DATA']) || $arParams['USE_BIG_DATA'] != 'N') && $setOnTop == true)):?>
+<?if(/*$arResult["DETAIL_TEXT"] || (*/($arAccessories || $arExpValues || !isset($arParams['USE_BIG_DATA']) || $arParams['USE_BIG_DATA'] != 'N') && $setOnTop == true/*)*/):?>
 <div class="row">
   <?/*if(strlen($arResult["DETAIL_TEXT"])):?>
     <div class="col-<?=($arResult["DETAIL_TEXT"]) && (($arAccessories || $arExpValues || !isset($arParams['USE_BIG_DATA']) || $arParams['USE_BIG_DATA'] != 'N') && $setOnTop == true) ? 'xs-12 col-md-6' : 'xs-12' ?>">
@@ -1516,7 +1516,7 @@ $arViewedData = array(
             <?endif;*/?>
 
       <?if($bViewBlock):?>
-        <div class="bottom_slider specials tab_slider_wrapp block_v">
+        <div class="bottom_slider specials tab_slider_wrapp block_v <?=/*(*/$setOnTop==false/*) || ($setOnTop==true && $arResult["DETAIL_TEXT"])*/ ? 'vertical' : '';?>">
           <?if($arTab):?>
             <?foreach($arTab as $code=>$title):?>
               <div class="wraps">
@@ -1531,6 +1531,7 @@ $arViewedData = array(
                       <?
                       $GLOBALS["CATALOG_CURRENT_ELEMENT_ID"] = $ElementID;
                       ?>
+                      <?$frame = $this->createFrame()->begin();?>
                       <?$APPLICATION->IncludeComponent("bitrix:catalog.bigdata.products", CNext::checkVersionExt(), array(
                         "USE_REGION" => ($arRegion ? "Y" : "N"),
                         "STORES" => $arParams['STORES'],
@@ -1594,6 +1595,7 @@ $arViewedData = array(
                         array("HIDE_ICONS" => "Y", "ACTIVE_COMPONENT" => "Y")
                       );
                       ?>
+                      <? $frame->end();?>
                     <?}else{?>
                     <?if (/*(*/$setOnTop==false)/* || ($setOnTop==true && $arResult["DETAIL_TEXT"]))*/:?>
                       <div class="tabs_slider_container shadow border custom_flex top_right vertical">
@@ -1692,7 +1694,7 @@ $arViewedData = array(
           <?endif;?>
         </div>
       <?else:?>
-        <div class="bottom_slider specials tab_slider_wrapp">
+        <div class="bottom_slider specials tab_slider_wrapp <?=/*(*/$setOnTop==false/*) || ($setOnTop==true && $arResult["DETAIL_TEXT"])*/ ? 'vertical' : '';?>">
           <div class="top_blocks">
             <ul class="tabs">
               <?$i=1;
@@ -1719,6 +1721,7 @@ $arViewedData = array(
                   <?
                   $GLOBALS["CATALOG_CURRENT_ELEMENT_ID"] = $ElementID;
                   ?>
+                  <?$frame = $this->createFrame()->begin();?>
                   <?$APPLICATION->IncludeComponent("bitrix:catalog.bigdata.products", CNext::checkVersionExt(), array(
                     "USE_REGION" => ($arRegion ? "Y" : "N"),
                     "STORES" => $arParams['STORES'],
@@ -1782,6 +1785,7 @@ $arViewedData = array(
                     array("HIDE_ICONS" => "Y", "ACTIVE_COMPONENT" => "Y")
                   );
                   ?>
+                  <? $frame->end();?>
                 <?}else{?>
                   <?if /*(*/($setOnTop==false)/* || ($setOnTop==true && $arResult["DETAIL_TEXT"]))*/:?>
                     <div class="tabs_slider_container shadow border custom_flex top_right vertical">
@@ -2990,3 +2994,4 @@ $arViewedData = array(
 
 
 </script>
+<script src="/bitrix/templates/aspro_next/components/bitrix/catalog.bigdata.products/main_new/script-tabs.js"></script>
