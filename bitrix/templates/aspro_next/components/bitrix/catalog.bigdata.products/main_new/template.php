@@ -35,7 +35,7 @@ if (isset($arResult['REQUEST_ITEMS']))
 					'site_id': '<?=CUtil::JSEscape(SITE_ID)?>',
 					'rcm': 'yes',
                     'set_on_top': '<?=$setOnTop?>',
-                    'detail_text': '<?=$GLOBALS['THIS_DETAIL_TEXT']?>'
+                    'detail_text': '<?=$GLOBALS['THIS_DETAIL_TEXT'] ? 'yes' : ''?>'
 				}
 			);
 		});
