@@ -1523,7 +1523,7 @@ function bx_rcm_get_from_cloud(injectId, rcmParameters, localAjaxData)
 		'method': 'GET',
 		'dataType': 'json',
 		'url': url,
-		'timeout': 3,
+		'timeout': 10,
 		'onsuccess': onready,
 		'onfailure': onready
 	});

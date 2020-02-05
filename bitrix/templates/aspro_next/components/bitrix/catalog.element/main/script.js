@@ -15,10 +15,12 @@ $(document).ready(function (){
 			'</ul>'+
 		'</div>'+
 		'</div>').insertAfter($('#headerfixed'));
-	$('.product-item-detail-tabs-list a').addClass('dark_link');
-	$('.tab_slider_wrapp .tabs > li').first().addClass('cur');
-	$('.tab_slider_wrapp .slider_navigation > li').first().addClass('cur');
-	$('.tab_slider_wrapp .tabs_content > li').first().addClass('cur');
+	setTimeout(function () {
+		$('.product-item-detail-tabs-list a').addClass('dark_link');
+		$('.tab_slider_wrapp .tabs > li').first().addClass('cur');
+		$('.tab_slider_wrapp .slider_navigation > li').first().addClass('cur');
+		$('.tab_slider_wrapp .tabs_content > li').first().addClass('cur');
+	}, 500);
 
 	$('.tab_slider_wrapp .tabs > li').on('click', function(){
 		InitFlexSlider();

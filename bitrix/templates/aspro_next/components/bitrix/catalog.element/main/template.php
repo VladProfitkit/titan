@@ -2990,8 +2990,4 @@ $arViewedData = array(
         SITE_ID: '<? echo SITE_ID; ?>'
     })
 
-
-
-
 </script>
-<script src="/bitrix/templates/aspro_next/components/bitrix/catalog.bigdata.products/main_new/script-tabs.js"></script>
