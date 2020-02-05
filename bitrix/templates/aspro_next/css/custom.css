@@ -524,6 +524,10 @@ footer .footer_inner {
     padding: 0;
 }
 
+.tabs_slider_container.vertical .catalog_item:not(.touch):hover {
+    padding-bottom: 0 !important;
+}
+
 .bigdata_recommended_products_items.vertical .dark_link span {
     font-weight: normal !important;
 }

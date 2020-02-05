@@ -190,6 +190,5 @@
             use Bitrix\Main\Page\Asset;
             Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/components/bitrix/catalog.bigdata.products/main_new/script.js");
         ?>
-<!--        <script src="/bitrix/templates/aspro_next/components/bitrix/catalog.bigdata.products/main_new/script.js"></script>-->
 	</body>
 </html>
