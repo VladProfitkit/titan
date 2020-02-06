@@ -20,7 +20,7 @@ $(document).ready(function (){
 		$('.tab_slider_wrapp .tabs > li').first().addClass('cur');
 		$('.tab_slider_wrapp .slider_navigation > li').first().addClass('cur');
 		$('.tab_slider_wrapp .tabs_content > li').first().addClass('cur');
-	}, 1500);
+	}, 500);
 
 	$('.tab_slider_wrapp .tabs > li').on('click', function(){
 		InitFlexSlider();

@@ -452,6 +452,11 @@ footer .footer_inner {
 }
 
 /*стили вертикально ориентированных слайдеров*/
+
+.bottom_slider.vertical .catalog_item .cost.prices {
+    line-height: normal;
+}
+
 .bottom_slider.vertical > .tabs_content {
     height: 499px !important;
 }

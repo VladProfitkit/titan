@@ -888,7 +888,7 @@ $arViewedData = array(
                                                           "PRODUCT_PROPS_VARIABLE" => $arParams["PRODUCT_PROPS_VARIABLE"],
                                                           "DISPLAY_COMPARE" => $arParams["USE_COMPARE"],
                                                           "DISPLAY_WISH_BUTTONS" => $arParams["DISPLAY_WISH_BUTTONS"],
-                                                          "ELEMENT_COUNT" => $disply_elements,
+                                                          "ELEMENT_COUNT" => "100",
                                                           "SHOW_MEASURE_WITH_RATIO" => $arParams["SHOW_MEASURE_WITH_RATIO"],
                                                           "SHOW_MEASURE" => $arParams["SHOW_MEASURE"],
                                                           "LINE_ELEMENT_COUNT" => $arParams["TOP_LINE_ELEMENT_COUNT"],
@@ -942,6 +942,22 @@ $arViewedData = array(
                                                         false, array("HIDE_ICONS"=>"Y")
                                                       );?>
                                                     </ul>
+                                                    <script>
+                                                        $('.product-item-detail-tabs-list a').addClass('dark_link');
+                                                        $('.tab_slider_wrapp .tabs > li').first().addClass('cur');
+                                                        $('.tab_slider_wrapp .slider_navigation > li').first().addClass('cur');
+                                                        $('.tab_slider_wrapp .tabs_content > li').first().addClass('cur');
+
+                                                        $('.tab_slider_wrapp .tabs > li').on('click', function(){
+                                                            $('.tab_slider_wrapp .tabs > li').removeClass('cur');
+                                                            $(this).addClass('cur');
+                                                            $('.tab_slider_wrapp .tabs_content > li').removeClass('cur');
+                                                            $('.tab_slider_wrapp .tabs_content > li[data-code="' + $(this).data('code') + '"]').addClass('cur');
+                                                            InitFlexSlider();
+                                                            $('.tab_slider_wrapp .tabs_content').height($('.tab_slider_wrapp .tabs_content > li.cur').data('unhover'));
+                                                            $(window).resize();
+                                                        });
+                                                    </script>
                                                 </div>
                                             <?}?>
                                           </li>
@@ -1072,7 +1088,7 @@ $arViewedData = array(
                                                   "PRODUCT_PROPS_VARIABLE" => $arParams["PRODUCT_PROPS_VARIABLE"],
                                                   "DISPLAY_COMPARE" => $arParams["USE_COMPARE"],
                                                   "DISPLAY_WISH_BUTTONS" => $arParams["DISPLAY_WISH_BUTTONS"],
-                                                  "ELEMENT_COUNT" => $disply_elements,
+                                                  "ELEMENT_COUNT" => "100",
                                                   "SHOW_MEASURE_WITH_RATIO" => $arParams["SHOW_MEASURE_WITH_RATIO"],
                                                   "SHOW_MEASURE" => $arParams["SHOW_MEASURE"],
                                                   "LINE_ELEMENT_COUNT" => $arParams["TOP_LINE_ELEMENT_COUNT"],
@@ -1126,6 +1142,22 @@ $arViewedData = array(
                                                 false, array("HIDE_ICONS"=>"Y")
                                               );?>
                                             </ul>
+                                            <script>
+                                                $('.product-item-detail-tabs-list a').addClass('dark_link');
+                                                $('.tab_slider_wrapp .tabs > li').first().addClass('cur');
+                                                $('.tab_slider_wrapp .slider_navigation > li').first().addClass('cur');
+                                                $('.tab_slider_wrapp .tabs_content > li').first().addClass('cur');
+
+                                                $('.tab_slider_wrapp .tabs > li').on('click', function(){
+                                                    $('.tab_slider_wrapp .tabs > li').removeClass('cur');
+                                                    $(this).addClass('cur');
+                                                    $('.tab_slider_wrapp .tabs_content > li').removeClass('cur');
+                                                    $('.tab_slider_wrapp .tabs_content > li[data-code="' + $(this).data('code') + '"]').addClass('cur');
+                                                    InitFlexSlider();
+                                                    $('.tab_slider_wrapp .tabs_content').height($('.tab_slider_wrapp .tabs_content > li.cur').data('unhover'));
+                                                    $(window).resize();
+                                                });
+                                            </script>
                                         </div>
                                     <?}?>
                                   </li>
@@ -1631,7 +1663,7 @@ $arViewedData = array(
                               "PRODUCT_PROPS_VARIABLE" => $arParams["PRODUCT_PROPS_VARIABLE"],
                               "DISPLAY_COMPARE" => $arParams["USE_COMPARE"],
                               "DISPLAY_WISH_BUTTONS" => $arParams["DISPLAY_WISH_BUTTONS"],
-                              "ELEMENT_COUNT" => $disply_elements,
+                              "ELEMENT_COUNT" => "100",
                               "SHOW_MEASURE_WITH_RATIO" => $arParams["SHOW_MEASURE_WITH_RATIO"],
                               "SHOW_MEASURE" => $arParams["SHOW_MEASURE"],
                               "LINE_ELEMENT_COUNT" => $arParams["TOP_LINE_ELEMENT_COUNT"],
@@ -1685,6 +1717,22 @@ $arViewedData = array(
                             false, array("HIDE_ICONS"=>"Y")
                           );?>
                         </ul>
+                        <script>
+                            $('.product-item-detail-tabs-list a').addClass('dark_link');
+                            $('.tab_slider_wrapp .tabs > li').first().addClass('cur');
+                            $('.tab_slider_wrapp .slider_navigation > li').first().addClass('cur');
+                            $('.tab_slider_wrapp .tabs_content > li').first().addClass('cur');
+
+                            $('.tab_slider_wrapp .tabs > li').on('click', function(){
+                                $('.tab_slider_wrapp .tabs > li').removeClass('cur');
+                                $(this).addClass('cur');
+                                $('.tab_slider_wrapp .tabs_content > li').removeClass('cur');
+                                $('.tab_slider_wrapp .tabs_content > li[data-code="' + $(this).data('code') + '"]').addClass('cur');
+                                InitFlexSlider();
+                                $('.tab_slider_wrapp .tabs_content').height($('.tab_slider_wrapp .tabs_content > li.cur').data('unhover'));
+                                $(window).resize();
+                            });
+                        </script>
                       </div>
                     <?}?>
                   </li>
@@ -1821,7 +1869,7 @@ $arViewedData = array(
                           "PRODUCT_PROPS_VARIABLE" => $arParams["PRODUCT_PROPS_VARIABLE"],
                           "DISPLAY_COMPARE" => $arParams["USE_COMPARE"],
                           "DISPLAY_WISH_BUTTONS" => $arParams["DISPLAY_WISH_BUTTONS"],
-                          "ELEMENT_COUNT" => $disply_elements,
+                          "ELEMENT_COUNT" => "100",
                           "SHOW_MEASURE_WITH_RATIO" => $arParams["SHOW_MEASURE_WITH_RATIO"],
                           "SHOW_MEASURE" => $arParams["SHOW_MEASURE"],
                           "LINE_ELEMENT_COUNT" => $arParams["TOP_LINE_ELEMENT_COUNT"],
@@ -1875,6 +1923,22 @@ $arViewedData = array(
                         false, array("HIDE_ICONS"=>"Y")
                       );?>
                     </ul>
+                    <script>
+                        $('.product-item-detail-tabs-list a').addClass('dark_link');
+                        $('.tab_slider_wrapp .tabs > li').first().addClass('cur');
+                        $('.tab_slider_wrapp .slider_navigation > li').first().addClass('cur');
+                        $('.tab_slider_wrapp .tabs_content > li').first().addClass('cur');
+
+                        $('.tab_slider_wrapp .tabs > li').on('click', function(){
+                            $('.tab_slider_wrapp .tabs > li').removeClass('cur');
+                            $(this).addClass('cur');
+                            $('.tab_slider_wrapp .tabs_content > li').removeClass('cur');
+                            $('.tab_slider_wrapp .tabs_content > li[data-code="' + $(this).data('code') + '"]').addClass('cur');
+                            InitFlexSlider();
+                            $('.tab_slider_wrapp .tabs_content').height($('.tab_slider_wrapp .tabs_content > li.cur').data('unhover'));
+                            $(window).resize();
+                        });
+                    </script>
                   </div>
                 <?}?>
               </li>
@@ -2991,3 +3055,4 @@ $arViewedData = array(
     })
 
 </script>
+
