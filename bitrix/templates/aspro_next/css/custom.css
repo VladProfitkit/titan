@@ -639,6 +639,29 @@ footer .footer_inner {
     flex-direction: column;
 }
 
+.custom_flex.vertical .price_matrix_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 4px;
+}
+
+.custom_flex.vertical .price_matrix_wrapper > div {
+    margin: 0;
+    padding: 0;
+}
+
+.custom_flex.vertical .sale_wrapper {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.custom_flex.vertical .stickers {
+    display: flex;
+    justify-content: flex-start;
+}
+
 @media (min-width: 601px) and (max-width: 1199px) {
     .vertical .inner_wrap {
         flex-wrap: wrap !important;
