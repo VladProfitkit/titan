@@ -1,7 +1,11 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("y-market-test");
-?><?$APPLICATION->IncludeComponent(
+?><?
+global $arrFilterNoArchived;
+$arrFilterNoArchived = array('!PROPERTY_ARCHIV_TOV_VALUE' => 'Да');
+
+$APPLICATION->IncludeComponent(
 	"webfly:yandex.market", 
 	"newmarket", 
 	array(
@@ -46,7 +50,7 @@ $APPLICATION->SetTitle("y-market-test");
 		"ECHO_ADMIN_INFO" => "N",
 		"EXPIRY" => "0",
 		"FEE" => "0",
-		"FILTER_NAME" => "arrFilter",
+		"FILTER_NAME" => "arrFilterNoArchived",
 		"FILTER_NAME_SKU" => "arrFilterSku",
 		"GET_OVER_FIELDS_ANONCE" => "N",
 		"HTTPS_CHECK" => "Y",

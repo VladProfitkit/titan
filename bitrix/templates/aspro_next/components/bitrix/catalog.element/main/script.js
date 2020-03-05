@@ -15,12 +15,20 @@ $(document).ready(function (){
 			'</ul>'+
 		'</div>'+
 		'</div>').insertAfter($('#headerfixed'));
-	setTimeout(function () {
-		$('.product-item-detail-tabs-list a').addClass('dark_link');
-		$('.tab_slider_wrapp .tabs > li').first().addClass('cur');
-		$('.tab_slider_wrapp .slider_navigation > li').first().addClass('cur');
-		$('.tab_slider_wrapp .tabs_content > li').first().addClass('cur');
-	}, 500);
+	$('ul.tabs_content').ready(function () {
+		setTimeout(function () {
+			$('.product-item-detail-tabs-list a').addClass('dark_link');
+			$('.tab_slider_wrapp .tabs > li').first().addClass('cur');
+			$('.tab_slider_wrapp .slider_navigation > li').first().addClass('cur');
+			$('.tab_slider_wrapp .tabs_content > li').first().addClass('cur');
+		}, 1500);
+	})
+	// setTimeout(function () {
+	// 	$('.product-item-detail-tabs-list a').addClass('dark_link');
+	// 	$('.tab_slider_wrapp .tabs > li').first().addClass('cur');
+	// 	$('.tab_slider_wrapp .slider_navigation > li').first().addClass('cur');
+	// 	$('.tab_slider_wrapp .tabs_content > li').first().addClass('cur');
+	// }, 1500);
 
 	$('.tab_slider_wrapp .tabs > li').on('click', function(){
 		InitFlexSlider();
